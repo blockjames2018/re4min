@@ -1,9 +1,6 @@
 # Javascript step-sequencer
 
 written in vue.js, uses tone.js library for timing and sounds.
-
-![step-sequencer](screenshot_sequencer.png?raw=true "step-sequencer")
-
 ## Project setup
 ```
 npm install
