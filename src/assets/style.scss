@@ -599,8 +599,7 @@ main {
   .tickerNum {
     background: #ebedec;
     height: 30px;
-    display: flex;
-    align-items: center;
+    line-height: 30px;
   }
   .jKNSgD {
     display: flex;
@@ -608,11 +607,12 @@ main {
     align-items: center;
     height: 30px;
     width: fit-content;
+    background: #ebedec;
     .ticker {
       display: flex;
       justify-content: center;
       width: 102px;
-      height: 16px;
+      height: 30px;
       font-size: 16px;
       color: #000;
       font-weight: 600;
@@ -624,8 +624,9 @@ main {
     box-sizing: border-box;
     width: 100px;
     background-color: #ebedec;
-    height: 30px;
+    height: 31px;
     align-items: center;
+    border-bottom: 1px solid #ddd;
   }
   .jkdwEk {
     margin-right: 8px;
@@ -700,7 +701,7 @@ main {
     // width: fit-content;
     display: flex;
     margin: 0 0 0 100px;
-    padding-top: 24vh;
+    padding-top: 261px;
     .track_flex {
       // display: flex;
       display: -webkit-box;
@@ -902,8 +903,8 @@ input[type="number"] {
   display: flex;
   align-items: center;
   background: #fff;
-  padding-top: 10vh;
-  padding-bottom: 5vh;
+  padding-top: 100px;
+  padding-bottom: 50px;
   .player_container {
     margin: 0 198px;
     display: flex;
@@ -1119,4 +1120,21 @@ input[type="number"] {
 /deep/.el-slider__button {
   border: 2px solid #707171;
   background-color: #fff;
+}
+
+.nodeNumList {
+  position: fixed;
+  padding-top: 230px;
+  width: 100%;
+  z-index: 99;
+  .numListCont {
+    width: 100%;
+    margin: 0 0 0 100px;
+    display: flex;
+  }
+  .tickerNumList{
+    width: 100%;
+    overflow: hidden;
+    border-bottom: 1px solid #ddd;
+  }
 }

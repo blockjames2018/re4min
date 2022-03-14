@@ -11,16 +11,6 @@
               </div>
             </div>
             <div class="mapListInfo">
-              <!-- <div class="progress-wrapper">
-                <div class="progress-bar-wrapper">
-                  <div class="progress-bar" ref="progressBar">
-                    <div class="bar-inner">
-                      <div class="progress" ref="progress"></div>
-                      <div class="progress-btn-wrapper" ref="progressBtn"></div>
-                    </div>
-                  </div>
-                </div>
-              </div> -->
               <el-slider
                 v-model="progressValue"
                 :show-tooltip="false"
@@ -29,8 +19,8 @@
             </div>
           </div>
         </div>
-        <div class="trackcontainer">
-          <div class="trackNodeName">
+        <div class="nodeNumList">
+          <div class="numListCont">
             <div class="jKNSgD">
               <div class="jkaEgP">
                 <div class="jkdwEk">
@@ -38,6 +28,23 @@
                 </div>
               </div>
             </div>
+            <div class="tickerNumList">
+              <div class="tickerNum">
+                <div class="sc-Num jKNSgD">
+                  <div
+                    v-for="(n, index) in parseInt(notevalue)"
+                    :key="index + 30"
+                    :class="{ ticker: true }"
+                  >
+                    {{ n }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="trackcontainer">
+          <div class="trackNodeName">
             <div v-for="(track, index) in tracks" class="track" :key="index">
               <div v-if="showTracks == index && !isFristTracks">
                 <div class="track_flex track_Icon" @click="getShowTracks(-1)">
@@ -58,17 +65,6 @@
           </div>
           <div class="trackNodeList" ref="listContainer">
             <div class="listInfo">
-              <div class="tickerNum" ref="numContainer">
-                <div class="sc-Num jKNSgD">
-                  <div
-                    v-for="(n, index) in parseInt(notevalue)"
-                    :key="index + 30"
-                    :class="{ ticker: true }"
-                  >
-                    {{ n }}
-                  </div>
-                </div>
-              </div>
               <div v-for="(track, index) in tracks" class="track" :key="index">
                 <div v-if="showTracks == index && !isFristTracks">
                   <div class="track_flex">
@@ -156,11 +152,12 @@
                       :key="n + 's'"
                       v-for="n in parseInt(notevalue)"
                       :id="tracker.id + n"
-                      @mouseover="
-                        mouseOverNode(tracker.id, n, tracker.activate[n - 1])
-                      "
-                      @mouseleave="
-                        mouseLeaveNode(tracker.id, n, tracker.activate[n - 1])
+                      @click="
+                        addMusicOne(
+                          tracker.activate[n - 1],
+                          showTracks,
+                          tracker.res
+                        )
                       "
                     >
                       &#160;
@@ -792,6 +789,15 @@ export default {
       // console.log("player", player);
       player.start();
     },
+    //Play specified music
+    addMusicOne(check, index, e) {
+      if (check) {
+        let player = new Tone.Player().toDestination();
+        player.buffer = this.instruments[index].get(e);
+        // console.log("player", player);
+        player.start();
+      }
+    },
     //Play music
     async startSound() {
       if (!this.playing) {
@@ -843,7 +849,9 @@ export default {
       $(".listInfo")
         .css("transform", `translateX(-${this.totalWidth}px)`)
         .css("transition-duration", "2s");
-
+      $(".tickerNum")
+        .css("transform", `translateX(-${this.totalWidth}px)`)
+        .css("transition-duration", "2s");
       this.current = parseInt(this.totalWidth / 102);
 
       console.log(this.current);
@@ -853,28 +861,28 @@ export default {
       //bass pad drums synth cymbals piano guitar lead
       this.bass = new Tone.ToneAudioBuffers({
         urls: {
-          type1: "bass/A2.wav",
-          type2: "bass/C2.wav",
-          type3: "bass/C3.wav",
-          type4: "bass/D02.wav",
-          type5: "bass/D2.wav",
-          type6: "bass/F2.wav",
-          type7: "bass/G02.wav",
-          type8: "bass/G2.wav",
+          type1: "bass/C3.wav",
+          type2: "bass/A02.wav",
+          type3: "bass/G02.wav",
+          type4: "bass/G2.wav",
+          type5: "bass/F2.wav",
+          type6: "bass/D02.wav",
+          type7: "bass/D2.wav",
+          type8: "bass/C2.wav",
         },
         onload: () => console.log("bass loaded"),
         baseUrl: "/music/",
       });
       this.pad = new Tone.ToneAudioBuffers({
         urls: {
-          type1: "pad/A03.wav",
-          type2: "pad/C3.wav",
-          type3: "pad/C4.wav",
-          type4: "pad/D03.wav",
-          type5: "pad/D3.wav",
-          type6: "pad/F3.wav",
-          type7: "pad/G03.wav",
-          type8: "pad/G3.wav",
+          type1: "pad/C4.wav",
+          type2: "pad/A03.wav",
+          type3: "pad/G03.wav",
+          type4: "pad/G3.wav",
+          type5: "pad/F3.wav",
+          type6: "pad/D03.wav",
+          type7: "pad/D3.wav",
+          type8: "pad/C3.wav",
         },
         onload: () => console.log("pad loaded"),
         baseUrl: "/music/",
@@ -895,14 +903,14 @@ export default {
       });
       this.synth = new Tone.ToneAudioBuffers({
         urls: {
-          type1: "synth/A02.wav",
-          type2: "synth/C2.wav",
-          type3: "synth/C3.wav",
-          type4: "synth/D02.wav",
-          type5: "synth/D2.wav",
-          type6: "synth/F2.wav",
-          type7: "synth/G02.wav",
-          type8: "synth/G2.wav",
+          type1: "synth/C3.wav",
+          type2: "synth/A02.wav",
+          type3: "synth/G02.wav",
+          type4: "synth/G2.wav",
+          type5: "synth/F2.wav",
+          type6: "synth/D02.wav",
+          type7: "synth/D2.wav",
+          type8: "synth/C2.wav",
         },
         onload: () => console.log("synth loaded"),
         baseUrl: "/music/",
@@ -923,58 +931,46 @@ export default {
       });
       this.piano = new Tone.ToneAudioBuffers({
         urls: {
-          type1: "piano/A03.wav",
-          type2: "piano/C3.wav",
-          type3: "piano/C4.wav",
-          type4: "piano/D03.wav",
-          type5: "piano/D3.wav",
-          type6: "piano/F3.wav",
-          type7: "piano/G03.wav",
-          type8: "piano/G3.wav",
+          type1: "piano/C4.wav",
+          type2: "piano/A03.wav",
+          type3: "piano/G03.wav",
+          type4: "piano/G3.wav",
+          type5: "piano/F3.wav",
+          type6: "piano/D03.wav",
+          type7: "piano/D3.wav",
+          type8: "piano/C3.wav",
         },
         onload: () => console.log("piano loaded"),
         baseUrl: "/music/",
       });
       this.guitar = new Tone.ToneAudioBuffers({
         urls: {
-          type1: "guitar/A02.wav",
-          type2: "guitar/C2.wav",
-          type3: "guitar/C3.wav",
-          type4: "guitar/D02.wav",
-          type5: "guitar/D2.wav",
-          type6: "guitar/F2.wav",
-          type7: "guitar/G02.wav",
-          type8: "guitar/G2.wav",
+          type1: "guitar/C3.wav",
+          type2: "guitar/A02.wav",
+          type3: "guitar/G02.wav",
+          type4: "guitar/G2.wav",
+          type5: "guitar/F2.wav",
+          type6: "guitar/D02.wav",
+          type7: "guitar/D2.wav",
+          type8: "guitar/C2.wav",
         },
         onload: () => console.log("guitar loaded"),
         baseUrl: "/music/",
       });
       this.lead = new Tone.ToneAudioBuffers({
         urls: {
-          type1: "lead/A02.wav",
-          type2: "lead/C2.wav",
-          type3: "lead/C3.wav",
-          type4: "lead/D02.wav",
-          type5: "lead/D2.wav",
-          type6: "lead/F2.wav",
-          type7: "lead/G02.wav",
-          type8: "lead/G2.wav",
+          type1: "lead/C3.wav",
+          type2: "lead/A02.wav",
+          type3: "lead/G02.wav",
+          type4: "lead/G2.wav",
+          type5: "lead/F2.wav",
+          type6: "lead/D02.wav",
+          type7: "lead/D2.wav",
+          type8: "lead/C2.wav",
         },
         onload: () => console.log("lead loaded"),
         baseUrl: "/music/",
       });
-    },
-
-    //Display grid details
-    mouseOverNode(name, id, isCheck) {
-      if (isCheck === true) {
-        this.showNftInfo = true;
-      }
-    },
-    mouseLeaveNode(name, id, isCheck) {
-      if (isCheck === true) {
-        this.showNftInfo = false;
-      }
     },
 
     //Click the map to scroll left and right
@@ -989,6 +985,9 @@ export default {
         $(".listInfo")
           .css("transform", `translateX(-${this.totalWidth}px)`)
           .css("transition-duration", "2s");
+        $(".tickerNum")
+          .css("transform", `translateX(-${this.totalWidth}px)`)
+          .css("transition-duration", "2s");
       } else {
         if (this.totalWidth != 0) {
           if (this.totalWidth === this.countWidth) {
@@ -999,6 +998,9 @@ export default {
           $(".listInfo")
             .css("transform", `translateX(-${this.totalWidth}px)`)
             .css("transition-duration", "2s");
+          $(".tickerNum")
+            .css("transform", `translateX(-${this.totalWidth}px)`)
+            .css("transition-duration", "2s");
         }
       }
     },
@@ -1007,10 +1009,10 @@ export default {
     getRollView() {
       let viewWidth = $(".trackNodeList").width();
       let activeLeft = $(".active").offset().left;
-        let distance = parseInt(viewWidth) - parseInt(activeLeft);
-        if (distance < 100) {
-          this.rollData("next");
-        }
+      let distance = parseInt(viewWidth) - parseInt(activeLeft);
+      if (distance < 100) {
+        this.rollData("next");
+      }
     },
 
     //

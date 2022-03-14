@@ -21,10 +21,10 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #202427;
+  background: #eee;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(132deg, #2d2b31 0%, #334866 100%);
+  background: linear-gradient(132deg, #d8dad9 0%, #d8dad9 100%);
 }
 </style>
