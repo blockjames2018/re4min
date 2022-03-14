@@ -15,6 +15,7 @@
         </div>
         <div class="mapNodeList">
           <div class="mapNext">
+            ·
             <img v-if="mapTotalWidth === 0" src="img/l.png" />
             <img
               v-else
@@ -48,13 +49,13 @@
                     :class="{
                       block: true,
                       bass: tracksName[index] === 'bass',
-                      sfx: tracksName[index] === 'sfx',
+                      pad: tracksName[index] === 'pad',
                       drums: tracksName[index] === 'drums',
                       synth: tracksName[index] === 'synth',
                       cymbals: tracksName[index] === 'cymbals',
                       piano: tracksName[index] === 'piano',
                       guitar: tracksName[index] === 'guitar',
-                      keys: tracksName[index] === 'keys',
+                      lead: tracksName[index] === 'lead',
                       blockCheck: check(track, n - 1),
                     }"
                     :key="n + 'w'"
@@ -168,18 +169,18 @@
                           n == current && tracksName[index] === 'bass',
                         active: n == current,
                         bass: tracksName[index] === 'bass',
-                        sfx: tracksName[index] === 'sfx',
+                        pad: tracksName[index] === 'pad',
                         drums: tracksName[index] === 'drums',
                         synth: tracksName[index] === 'synth',
                         cymbals: tracksName[index] === 'cymbals',
                         piano: tracksName[index] === 'piano',
                         guitar: tracksName[index] === 'guitar',
-                        keys: tracksName[index] === 'keys',
+                        lead: tracksName[index] === 'lead',
                         blockCheck: check(track, n - 1),
                       }"
                       :key="n + 't'"
                       v-for="n in parseInt(notevalue)"
-                       @click="getShowTracks(-1)"
+                      @click="getShowTracks(-1)"
                     >
                       &#160;
                     </div>
@@ -196,13 +197,13 @@
                         blockMini: true,
                         active: n == current,
                         bass: tracksName[index] === 'bass',
-                        sfx: tracksName[index] === 'sfx',
+                        pad: tracksName[index] === 'pad',
                         drums: tracksName[index] === 'drums',
                         synth: tracksName[index] === 'synth',
                         cymbals: tracksName[index] === 'cymbals',
                         piano: tracksName[index] === 'piano',
                         guitar: tracksName[index] === 'guitar',
-                        keys: tracksName[index] === 'keys',
+                        lead: tracksName[index] === 'lead',
                         blockCheck: tracker.activate[n - 1],
                       }"
                       :key="n + 's'"
@@ -230,13 +231,13 @@
                       bassPlayer: n == current && tracksName[index] === 'bass',
                       active: n == current,
                       bass: tracksName[index] === 'bass',
-                      sfx: tracksName[index] === 'sfx',
+                      pad: tracksName[index] === 'pad',
                       drums: tracksName[index] === 'drums',
                       synth: tracksName[index] === 'synth',
                       cymbals: tracksName[index] === 'cymbals',
                       piano: tracksName[index] === 'piano',
                       guitar: tracksName[index] === 'guitar',
-                      keys: tracksName[index] === 'keys',
+                      lead: tracksName[index] === 'lead',
                       blockCheck: check(track, n - 1),
                     }"
                     :key="n + 'y'"
@@ -280,7 +281,7 @@ export default {
       notevalue: 960,
       playing: false,
       bpm: 30,
-      //bass sfx drums synth cymbals piano guitar keys
+      //bass pad drums synth cymbals piano guitar lead
       tracks: [
         //1,bass
         [
@@ -329,7 +330,7 @@ export default {
             info: [],
           },
         ],
-        //2,sfx
+        //2,pad
         [
           {
             id: "ClosedHihat1",
@@ -671,7 +672,7 @@ export default {
             info: [],
           },
         ],
-        //8,keys
+        //8,lead
         [
           {
             id: "Plucks1",
@@ -732,25 +733,25 @@ export default {
         ],
       ],
       tracksName: [
-        //bass sfx drums synth cymbals piano guitar keys
+        //bass pad drums synth cymbals piano guitar lead
         "bass",
-        "sfx",
+        "pad",
         "drums",
         "synth",
         "cymbals",
         "piano",
         "guitar",
-        "keys",
+        "lead",
       ],
-      //bass sfx drums synth cymbals piano guitar keys
+      //bass pad drums synth cymbals piano guitar lead
       bass: null,
-      sfx: null,
+      pad: null,
       drums: null,
       synth: null,
       cymbals: null,
       piano: null,
       guitar: null,
-      keys: null,
+      lead: null,
 
       isFristTracks: true,
       showTracks: 0,
@@ -776,16 +777,16 @@ export default {
   },
   computed: {
     instruments() {
-      //bass sfx drums synth cymbals piano guitar keys
+      //bass pad drums synth cymbals piano guitar lead
       return [
         this.bass,
-        this.sfx,
+        this.pad,
         this.drums,
         this.synth,
         this.cymbals,
         this.piano,
         this.guitar,
-        this.keys,
+        this.lead,
       ];
     },
   },
@@ -962,33 +963,33 @@ export default {
     },
 
     init: function () {
-      //bass sfx drums synth cymbals piano guitar keys
+      //bass pad drums synth cymbals piano guitar lead
       this.bass = new Tone.ToneAudioBuffers({
         urls: {
-          type1: "drums/Kick1-C.wav",
-          type2: "drums/Kick2-D.wav",
-          type3: "drums/Percussion1.wav",
-          type4: "drums/Percussion2.wav",
-          type5: "drums/RimshotSnare1.wav",
-          type6: "drums/RimshotSnare2.wav",
-          type7: "drums/Snare1-F.wav",
-          type8: "drums/Snare2-A.wav",
+          type1: "bass/A02.wav",
+          type2: "bass/C2.wav",
+          type3: "bass/C3.wav",
+          type4: "bass/D02.wav",
+          type5: "bass/D2.wav",
+          type6: "bass/F2.wav",
+          type7: "bass/G02.wav",
+          type8: "bass/G2.wav",
         },
         onload: () => console.log("bass loaded"),
         baseUrl: "/music/",
       });
-      this.sfx = new Tone.ToneAudioBuffers({
+      this.pad = new Tone.ToneAudioBuffers({
         urls: {
-          type1: "cymbals/ClosedHihat1.wav",
-          type2: "cymbals/ClosedHihat2.wav",
-          type3: "cymbals/Crash1.wav",
-          type4: "cymbals/Crash2.wav",
-          type5: "cymbals/OpenHihat1.wav",
-          type6: "cymbals/OpenHihat2.wav",
-          type7: "cymbals/Ride1.wav",
-          type8: "cymbals/Ride2.wav",
+          type1: "pad/A03.wav",
+          type2: "pad/C3.wav",
+          type3: "pad/C4.wav",
+          type4: "pad/D03.wav",
+          type5: "pad/D3.wav",
+          type6: "pad/F3.wav",
+          type7: "pad/G03.wav",
+          type8: "pad/G3.wav",
         },
-        onload: () => console.log("sfx loaded"),
+        onload: () => console.log("pad loaded"),
         baseUrl: "/music/",
       });
       this.drums = new Tone.ToneAudioBuffers({
@@ -1007,14 +1008,14 @@ export default {
       });
       this.synth = new Tone.ToneAudioBuffers({
         urls: {
-          type1: "piano/A03.wav",
-          type2: "piano/C3.wav",
-          type3: "piano/C4.wav",
-          type4: "piano/D03.wav",
-          type5: "piano/D3.wav",
-          type6: "piano/F3.wav",
-          type7: "piano/G03.wav",
-          type8: "piano/G3.wav",
+          type1: "synth/A02.wav",
+          type2: "synth/C2.wav",
+          type3: "synth/C3.wav",
+          type4: "synth/D02.wav",
+          type5: "synth/D2.wav",
+          type6: "synth/F2.wav",
+          type7: "synth/G02.wav",
+          type8: "synth/G2.wav",
         },
         onload: () => console.log("synth loaded"),
         baseUrl: "/music/",
@@ -1049,30 +1050,30 @@ export default {
       });
       this.guitar = new Tone.ToneAudioBuffers({
         urls: {
-          type1: "drums/Kick1-C.wav",
-          type2: "drums/Kick2-D.wav",
-          type3: "drums/Percussion1.wav",
-          type4: "drums/Percussion2.wav",
-          type5: "drums/RimshotSnare1.wav",
-          type6: "drums/RimshotSnare2.wav",
-          type7: "drums/Snare1-F.wav",
-          type8: "drums/Snare2-A.wav",
+          type1: "guitar/A02.wav",
+          type2: "guitar/C2.wav",
+          type3: "guitar/C3.wav",
+          type4: "guitar/D02.wav",
+          type5: "guitar/D2.wav",
+          type6: "guitar/F2.wav",
+          type7: "guitar/G02.wav",
+          type8: "guitar/G2.wav",
         },
         onload: () => console.log("guitar loaded"),
         baseUrl: "/music/",
       });
-      this.keys = new Tone.ToneAudioBuffers({
+      this.lead = new Tone.ToneAudioBuffers({
         urls: {
-          type1: "cymbals/ClosedHihat1.wav",
-          type2: "cymbals/ClosedHihat2.wav",
-          type3: "cymbals/Crash1.wav",
-          type4: "cymbals/Crash2.wav",
-          type5: "cymbals/OpenHihat1.wav",
-          type6: "cymbals/OpenHihat2.wav",
-          type7: "cymbals/Ride1.wav",
-          type8: "cymbals/Ride2.wav",
+          type1: "lead/A02.wav",
+          type2: "lead/C2.wav",
+          type3: "lead/C3.wav",
+          type4: "lead/D02.wav",
+          type5: "lead/D2.wav",
+          type6: "lead/F2.wav",
+          type7: "lead/G02.wav",
+          type8: "lead/G2.wav",
         },
-        onload: () => console.log("keys loaded"),
+        onload: () => console.log("lead loaded"),
         baseUrl: "/music/",
       });
     },
@@ -1174,5 +1175,5 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../assets/style.scss";
+@import "../assets/style02.scss";
 </style>

@@ -325,10 +325,12 @@ export default {
     return {
       loading: true,
       current: 0,
-      notevalue: 480,
+      notevalue: 960,
       playing: false,
       bpm: 30,
+      //bass pad drums synth cymbals piano guitar lead
       tracks: [
+        //1,bass
         [
           { id: "Kick1", name: "Kick 1", res: "type1", activate: [], info: [] },
           { id: "Kick2", name: "Kick 2", res: "type2", activate: [], info: [] },
@@ -375,6 +377,7 @@ export default {
             info: [],
           },
         ],
+        //2,pad
         [
           {
             id: "ClosedHihat1",
@@ -421,6 +424,184 @@ export default {
           { id: "Ride1", name: "Ride 1", res: "type7", activate: [], info: [] },
           { id: "Ride2", name: "Ride 2", res: "type8", activate: [], info: [] },
         ],
+        //3,drums
+        [
+          {
+            id: "Kick1-C",
+            name: "Kick1-C",
+            res: "type1",
+            activate: [],
+            info: [],
+          },
+          {
+            id: "Kick2-D",
+            name: "Kick2-D",
+            res: "type2",
+            activate: [],
+            info: [],
+          },
+          {
+            id: "Percussion1",
+            name: "Percussion1",
+            res: "type3",
+            activate: [],
+            info: [],
+          },
+          {
+            id: "Percussion2",
+            name: "Percussion2",
+            res: "type4",
+            activate: [],
+            info: [],
+          },
+          {
+            id: "RimshotSnare1",
+            name: "RimshotSnare1",
+            res: "type5",
+            activate: [],
+            info: [],
+          },
+          {
+            id: "RimshotSnare2",
+            name: "RimshotSnare2",
+            res: "type6",
+            activate: [],
+            info: [],
+          },
+          {
+            id: "Snare1-F",
+            name: "Snare1-F",
+            res: "type7",
+            activate: [],
+            info: [],
+          },
+          {
+            id: "Snare2-A",
+            name: "Snare2-A",
+            res: "type8",
+            activate: [],
+            info: [],
+          },
+        ],
+        //4,synth
+        [
+          {
+            id: "ClosedHihat1",
+            name: "ClosedHihat1",
+            res: "type1",
+            activate: [],
+            info: [],
+          },
+          {
+            id: "ClosedHihat2",
+            name: "ClosedHihat2",
+            res: "type2",
+            activate: [],
+            info: [],
+          },
+          {
+            id: "Crash1",
+            name: "Crash1",
+            res: "type3",
+            activate: [],
+            info: [],
+          },
+          {
+            id: "Crash2",
+            name: "Crash2",
+            res: "type4",
+            activate: [],
+            info: [],
+          },
+          {
+            id: "OpenHihat1",
+            name: "OpenHihat1",
+            res: "type5",
+            activate: [],
+            info: [],
+          },
+          {
+            id: "OpenHihat2",
+            name: "OpenHihat2",
+            res: "type6",
+            activate: [],
+            info: [],
+          },
+          {
+            id: "Ride1",
+            name: "Ride1",
+            res: "type7",
+            activate: [],
+            info: [],
+          },
+          {
+            id: "Ride2",
+            name: "Ride2",
+            res: "type8",
+            activate: [],
+            info: [],
+          },
+        ],
+        //5,cymbals
+        [
+          {
+            id: "A03",
+            name: "A03",
+            res: "type1",
+            activate: [],
+            info: [],
+          },
+          {
+            id: "C3",
+            name: "C3",
+            res: "type2",
+            activate: [],
+            info: [],
+          },
+          {
+            id: "C4",
+            name: "C4",
+            res: "type3",
+            activate: [],
+            info: [],
+          },
+          {
+            id: "D03",
+            name: "D03",
+            res: "type4",
+            activate: [],
+            info: [],
+          },
+          {
+            id: "D3",
+            name: "D3",
+            res: "type5",
+            activate: [],
+            info: [],
+          },
+          {
+            id: "F3",
+            name: "F3",
+            res: "type6",
+            activate: [],
+            info: [],
+          },
+          {
+            id: "G03",
+            name: "G03",
+            res: "type7",
+            activate: [],
+            info: [],
+          },
+          {
+            id: "G3",
+            name: "G3",
+            res: "type8",
+            activate: [],
+            info: [],
+          },
+        ],
+        //6,piano
         [
           {
             id: "Plucks1",
@@ -479,6 +660,7 @@ export default {
             info: [],
           },
         ],
+        //7,guitar
         [
           {
             id: "Plucks1",
@@ -537,296 +719,7 @@ export default {
             info: [],
           },
         ],
-        [
-          {
-            id: "Plucks1",
-            name: "Plucks 1",
-            res: "type1",
-            activate: [],
-            info: [],
-          },
-          {
-            id: "Plucks2",
-            name: "Plucks 2",
-            res: "type2",
-            activate: [],
-            info: [],
-          },
-          {
-            id: "Plucks3",
-            name: "Plucks 3",
-            res: "type3",
-            activate: [],
-            info: [],
-          },
-          {
-            id: "Plucks4",
-            name: "Plucks 4",
-            res: "type4",
-            activate: [],
-            info: [],
-          },
-          {
-            id: "Plucks5",
-            name: "Plucks 5",
-            res: "type5",
-            activate: [],
-            info: [],
-          },
-          {
-            id: "Plucks6",
-            name: "Plucks 6",
-            res: "type6",
-            activate: [],
-            info: [],
-          },
-          {
-            id: "Plucks7",
-            name: "Plucks 7",
-            res: "type7",
-            activate: [],
-            info: [],
-          },
-          {
-            id: "Plucks8",
-            name: "Plucks 8",
-            res: "type8",
-            activate: [],
-            info: [],
-          },
-        ],
-        [
-          {
-            id: "Plucks1",
-            name: "Plucks 1",
-            res: "type1",
-            activate: [],
-            info: [],
-          },
-          {
-            id: "Plucks2",
-            name: "Plucks 2",
-            res: "type2",
-            activate: [],
-            info: [],
-          },
-          {
-            id: "Plucks3",
-            name: "Plucks 3",
-            res: "type3",
-            activate: [],
-            info: [],
-          },
-          {
-            id: "Plucks4",
-            name: "Plucks 4",
-            res: "type4",
-            activate: [],
-            info: [],
-          },
-          {
-            id: "Plucks5",
-            name: "Plucks 5",
-            res: "type5",
-            activate: [],
-            info: [],
-          },
-          {
-            id: "Plucks6",
-            name: "Plucks 6",
-            res: "type6",
-            activate: [],
-            info: [],
-          },
-          {
-            id: "Plucks7",
-            name: "Plucks 7",
-            res: "type7",
-            activate: [],
-            info: [],
-          },
-          {
-            id: "Plucks8",
-            name: "Plucks 8",
-            res: "type8",
-            activate: [],
-            info: [],
-          },
-        ],
-        [
-          {
-            id: "Plucks1",
-            name: "Plucks 1",
-            res: "type1",
-            activate: [],
-            info: [],
-          },
-          {
-            id: "Plucks2",
-            name: "Plucks 2",
-            res: "type2",
-            activate: [],
-            info: [],
-          },
-          {
-            id: "Plucks3",
-            name: "Plucks 3",
-            res: "type3",
-            activate: [],
-            info: [],
-          },
-          {
-            id: "Plucks4",
-            name: "Plucks 4",
-            res: "type4",
-            activate: [],
-            info: [],
-          },
-          {
-            id: "Plucks5",
-            name: "Plucks 5",
-            res: "type5",
-            activate: [],
-            info: [],
-          },
-          {
-            id: "Plucks6",
-            name: "Plucks 6",
-            res: "type6",
-            activate: [],
-            info: [],
-          },
-          {
-            id: "Plucks7",
-            name: "Plucks 7",
-            res: "type7",
-            activate: [],
-            info: [],
-          },
-          {
-            id: "Plucks8",
-            name: "Plucks 8",
-            res: "type8",
-            activate: [],
-            info: [],
-          },
-        ],
-        [
-          {
-            id: "Plucks1",
-            name: "Plucks 1",
-            res: "type1",
-            activate: [],
-            info: [],
-          },
-          {
-            id: "Plucks2",
-            name: "Plucks 2",
-            res: "type2",
-            activate: [],
-            info: [],
-          },
-          {
-            id: "Plucks3",
-            name: "Plucks 3",
-            res: "type3",
-            activate: [],
-            info: [],
-          },
-          {
-            id: "Plucks4",
-            name: "Plucks 4",
-            res: "type4",
-            activate: [],
-            info: [],
-          },
-          {
-            id: "Plucks5",
-            name: "Plucks 5",
-            res: "type5",
-            activate: [],
-            info: [],
-          },
-          {
-            id: "Plucks6",
-            name: "Plucks 6",
-            res: "type6",
-            activate: [],
-            info: [],
-          },
-          {
-            id: "Plucks7",
-            name: "Plucks 7",
-            res: "type7",
-            activate: [],
-            info: [],
-          },
-          {
-            id: "Plucks8",
-            name: "Plucks 8",
-            res: "type8",
-            activate: [],
-            info: [],
-          },
-        ],
-        [
-          {
-            id: "Plucks1",
-            name: "Plucks 1",
-            res: "type1",
-            activate: [],
-            info: [],
-          },
-          {
-            id: "Plucks2",
-            name: "Plucks 2",
-            res: "type2",
-            activate: [],
-            info: [],
-          },
-          {
-            id: "Plucks3",
-            name: "Plucks 3",
-            res: "type3",
-            activate: [],
-            info: [],
-          },
-          {
-            id: "Plucks4",
-            name: "Plucks 4",
-            res: "type4",
-            activate: [],
-            info: [],
-          },
-          {
-            id: "Plucks5",
-            name: "Plucks 5",
-            res: "type5",
-            activate: [],
-            info: [],
-          },
-          {
-            id: "Plucks6",
-            name: "Plucks 6",
-            res: "type6",
-            activate: [],
-            info: [],
-          },
-          {
-            id: "Plucks7",
-            name: "Plucks 7",
-            res: "type7",
-            activate: [],
-            info: [],
-          },
-          {
-            id: "Plucks8",
-            name: "Plucks 8",
-            res: "type8",
-            activate: [],
-            info: [],
-          },
-        ],
+        //8,lead
         [
           {
             id: "Plucks1",
@@ -887,28 +780,25 @@ export default {
         ],
       ],
       tracksName: [
-        "Drum",
-        "Cymbal",
-        "Plucks",
-        "other4",
-        "other5",
-        "other6",
-        "other7",
-        "other8",
-        "other9",
-        "other10",
+        //bass pad drums synth cymbals piano guitar lead
+        "bass",
+        "pad",
+        "drums",
+        "synth",
+        "cymbals",
+        "piano",
+        "guitar",
+        "lead",
       ],
+      //bass pad drums synth cymbals piano guitar lead
+      bass: null,
+      pad: null,
       drums: null,
-      Cymbals: null,
-      Plucks: null,
-      other4: null,
-      other5: null,
-      other6: null,
-      other7: null,
-      other8: null,
-      other9: null,
-      other10: null,
-
+      synth: null,
+      cymbals: null,
+      piano: null,
+      guitar: null,
+      lead: null,
       showTracks: 0,
 
       bpmNum: 30,
@@ -923,21 +813,247 @@ export default {
       dataColumnList: [],
 
       upDataLst: [],
+
+      data: {
+        row: [
+          [
+            {
+              token_id: 1,
+              value: "0x0100000100000101",
+              owner: "0xaa8aA6BCaC137Ef4Ab3a22c00A2f256A7b6cbBdF",
+              update_at: "2022-01-05T07:48:51.000Z",
+              create_at: "2022-01-05T07:21:12.000Z",
+            },
+            {
+              token_id: 9,
+              value: "0x0000000000000000",
+              owner: "0x225b78D11d85302C0F117AF3879f1BBcF90e9283",
+              update_at: "2022-01-05T07:21:12.000Z",
+              create_at: "2022-01-05T07:21:12.000Z",
+            },
+            {
+              token_id: 17,
+              value: "0x0100000100000101",
+              owner: "0xaa8aA6BCaC137Ef4Ab3a22c00A2f256A7b6cbBdF",
+              update_at: "2022-01-05T07:50:22.000Z",
+              create_at: "2022-01-05T07:49:52.000Z",
+            },
+          ],
+          [
+            {
+              token_id: 2,
+              value: "0x0000010100010001",
+              owner: "0xaa8aA6BCaC137Ef4Ab3a22c00A2f256A7b6cbBdF",
+              update_at: "2022-01-05T07:48:51.000Z",
+              create_at: "2022-01-05T07:21:12.000Z",
+            },
+            {
+              token_id: 10,
+              value: "0x0000000000000000",
+              owner: "0x225b78D11d85302C0F117AF3879f1BBcF90e9283",
+              update_at: "2022-01-05T07:21:12.000Z",
+              create_at: "2022-01-05T07:21:12.000Z",
+            },
+            {
+              token_id: 18,
+              value: "0x0000000000000000",
+              owner: "0xaa8aA6BCaC137Ef4Ab3a22c00A2f256A7b6cbBdF",
+              update_at: "2022-01-05T07:49:52.000Z",
+              create_at: "2022-01-05T07:49:52.000Z",
+            },
+          ],
+          [
+            {
+              token_id: 3,
+              value: "0x0000000000000000",
+              owner: "0xaa8aA6BCaC137Ef4Ab3a22c00A2f256A7b6cbBdF",
+              update_at: "2022-01-05T07:21:12.000Z",
+              create_at: "2022-01-05T07:21:12.000Z",
+            },
+            {
+              token_id: 11,
+              value: "0x0000000000000000",
+              owner: "0x225b78D11d85302C0F117AF3879f1BBcF90e9283",
+              update_at: "2022-01-05T07:21:12.000Z",
+              create_at: "2022-01-05T07:21:12.000Z",
+            },
+            {
+              token_id: 19,
+              value: "0x0000000000000000",
+              owner: "0xaa8aA6BCaC137Ef4Ab3a22c00A2f256A7b6cbBdF",
+              update_at: "2022-01-05T07:49:52.000Z",
+              create_at: "2022-01-05T07:49:52.000Z",
+            },
+          ],
+          [
+            {
+              token_id: 4,
+              value: "0x0000000000000000",
+              owner: "0xaa8aA6BCaC137Ef4Ab3a22c00A2f256A7b6cbBdF",
+              update_at: "2022-01-05T07:21:12.000Z",
+              create_at: "2022-01-05T07:21:12.000Z",
+            },
+            {
+              token_id: 12,
+              value: "0x0000000000000000",
+              owner: "0x225b78D11d85302C0F117AF3879f1BBcF90e9283",
+              update_at: "2022-01-05T07:21:12.000Z",
+              create_at: "2022-01-05T07:21:12.000Z",
+            },
+            {
+              token_id: 20,
+              value: "0x0000010100010001",
+              owner: "0xaa8aA6BCaC137Ef4Ab3a22c00A2f256A7b6cbBdF",
+              update_at: "2022-01-05T07:50:22.000Z",
+              create_at: "2022-01-05T07:49:52.000Z",
+            },
+          ],
+          [
+            {
+              token_id: 5,
+              value: "0x0000000000000000",
+              owner: "0xaa8aA6BCaC137Ef4Ab3a22c00A2f256A7b6cbBdF",
+              update_at: "2022-01-05T07:21:12.000Z",
+              create_at: "2022-01-05T07:21:12.000Z",
+            },
+            {
+              token_id: 13,
+              value: "0x0000000000000000",
+              owner: "0x225b78D11d85302C0F117AF3879f1BBcF90e9283",
+              update_at: "2022-01-05T07:21:12.000Z",
+              create_at: "2022-01-05T07:21:12.000Z",
+            },
+          ],
+          [
+            {
+              token_id: 6,
+              value: "0x0101000100000001",
+              owner: "0x225b78D11d85302C0F117AF3879f1BBcF90e9283",
+              update_at: "2022-01-05T07:21:12.000Z",
+              create_at: "2022-01-05T07:21:12.000Z",
+            },
+            {
+              token_id: 14,
+              value: "0x0000000000000000",
+              owner: "0x225b78D11d85302C0F117AF3879f1BBcF90e9283",
+              update_at: "2022-01-05T07:21:12.000Z",
+              create_at: "2022-01-05T07:21:12.000Z",
+            },
+          ],
+          [
+            {
+              token_id: 7,
+              value: "0x0000000000000000",
+              owner: "0x225b78D11d85302C0F117AF3879f1BBcF90e9283",
+              update_at: "2022-01-05T07:21:12.000Z",
+              create_at: "2022-01-05T07:21:12.000Z",
+            },
+            {
+              token_id: 15,
+              value: "0x0000000000000000",
+              owner: "0x225b78D11d85302C0F117AF3879f1BBcF90e9283",
+              update_at: "2022-01-05T07:21:12.000Z",
+              create_at: "2022-01-05T07:21:12.000Z",
+            },
+          ],
+          [
+            {
+              token_id: 8,
+              value: "0x0000000000000000",
+              owner: "0x225b78D11d85302C0F117AF3879f1BBcF90e9283",
+              update_at: "2022-01-05T07:21:12.000Z",
+              create_at: "2022-01-05T07:21:12.000Z",
+            },
+            {
+              token_id: 16,
+              value: "0x0000000000000000",
+              owner: "0xaa8aA6BCaC137Ef4Ab3a22c00A2f256A7b6cbBdF",
+              update_at: "2022-01-05T07:49:52.000Z",
+              create_at: "2022-01-05T07:49:52.000Z",
+            },
+          ],
+        ],
+        column: [
+          [1, 0, 1],
+          [0, 0, 0],
+          [0, 0, 0],
+          [1, 0, 1],
+          [0, 0, 0],
+          [0, 0, 0],
+          [1, 0, 1],
+          [1, 0, 1],
+          [0, 0, 0],
+          [0, 0, 0],
+          [1, 0, 0],
+          [1, 0, 0],
+          [0, 0, 0],
+          [1, 0, 0],
+          [0, 0, 0],
+          [1, 0, 0],
+          [0, 0, 0],
+          [0, 0, 0],
+          [0, 0, 0],
+          [0, 0, 0],
+          [0, 0, 0],
+          [0, 0, 0],
+          [0, 0, 0],
+          [0, 0, 0],
+          [0, 0, 0],
+          [0, 0, 0],
+          [0, 0, 1],
+          [0, 0, 1],
+          [0, 0, 0],
+          [0, 0, 1],
+          [0, 0, 0],
+          [0, 0, 1],
+          [0, 0],
+          [0, 0],
+          [0, 0],
+          [0, 0],
+          [0, 0],
+          [0, 0],
+          [0, 0],
+          [0, 0],
+          [1, 0],
+          [1, 0],
+          [0, 0],
+          [1, 0],
+          [0, 0],
+          [0, 0],
+          [0, 0],
+          [1, 0],
+          [0, 0],
+          [0, 0],
+          [0, 0],
+          [0, 0],
+          [0, 0],
+          [0, 0],
+          [0, 0],
+          [0, 0],
+          [0, 0],
+          [0, 0],
+          [0, 0],
+          [0, 0],
+          [0, 0],
+          [0, 0],
+          [0, 0],
+          [0, 0],
+        ],
+      },
     };
   },
   computed: {
     instruments() {
-      return [ 
+      //bass pad drums synth cymbals piano guitar lead
+      return [
+        this.bass,
+        this.pad,
         this.drums,
-        this.Cymbals,
-        this.Plucks,
-        this.other4,
-        this.other5,
-        this.other6,
-        this.other7,
-        this.other8,
-        this.other9,
-        this.other10,
+        this.synth,
+        this.cymbals,
+        this.piano,
+        this.guitar,
+        this.lead,
       ];
     },
   },
@@ -979,7 +1095,7 @@ export default {
             track.activate[n - 1] = !track.activate[n - 1];
           }
         }
-        this.$forceUpdate(); 
+        this.$forceUpdate();
       };
     },
     setMeasure: function (measure) {
@@ -1019,145 +1135,118 @@ export default {
       this.playing = !this.playing;
     },
     init: function () {
+      //bass pad drums synth cymbals piano guitar lead
+      this.bass = new Tone.ToneAudioBuffers({
+        urls: {
+          type1: "bass/A02.wav",
+          type2: "bass/C2.wav",
+          type3: "bass/C3.wav",
+          type4: "bass/D02.wav",
+          type5: "bass/D2.wav",
+          type6: "bass/F2.wav",
+          type7: "bass/G02.wav",
+          type8: "bass/G2.wav",
+        },
+        onload: () => console.log("bass loaded"),
+        baseUrl: "/music/",
+      });
+      this.pad = new Tone.ToneAudioBuffers({
+        urls: {
+          type1: "pad/A03.wav",
+          type2: "pad/C3.wav",
+          type3: "pad/C4.wav",
+          type4: "pad/D03.wav",
+          type5: "pad/D3.wav",
+          type6: "pad/F3.wav",
+          type7: "pad/G03.wav",
+          type8: "pad/G3.wav",
+        },
+        onload: () => console.log("pad loaded"),
+        baseUrl: "/music/",
+      });
       this.drums = new Tone.ToneAudioBuffers({
         urls: {
-          type1: "Kick2.wav",
-          type2: "Kick2.wav",
-          type3: "drum3.wav",
-          type4: "drum5.wav",
-          type5: "drum5.wav",
-          type6: "drum6.wav",
-          type7: "drum7.wav",
-          type8: "drum8.wav",
+          type1: "drums/Kick1-C.wav",
+          type2: "drums/Kick2-D.wav",
+          type3: "drums/Percussion1.wav",
+          type4: "drums/Percussion2.wav",
+          type5: "drums/RimshotSnare1.wav",
+          type6: "drums/RimshotSnare2.wav",
+          type7: "drums/Snare1-F.wav",
+          type8: "drums/Snare2-A.wav",
         },
         onload: () => console.log("drums loaded"),
-        baseUrl: "/api",
+        baseUrl: "/music/",
       });
-      this.Cymbals = new Tone.ToneAudioBuffers({
+      this.synth = new Tone.ToneAudioBuffers({
         urls: {
-          type1: "Cymbals1.wav",
-          type2: "Cymbals2.wav",
-          type3: "Cymbals3.wav",
-          type4: "Cymbals4.wav",
-          type5: "Cymbals5.wav",
-          type6: "Cymbals6.wav",
-          type7: "Cymbals7.wav",
-          type8: "Cymbals8.wav",
+          type1: "synth/A02.wav",
+          type2: "synth/C2.wav",
+          type3: "synth/C3.wav",
+          type4: "synth/D02.wav",
+          type5: "synth/D2.wav",
+          type6: "synth/F2.wav",
+          type7: "synth/G02.wav",
+          type8: "synth/G2.wav",
         },
-        onload: () => console.log("Cymbals loaded"),
-        baseUrl: "/api",
+        onload: () => console.log("synth loaded"),
+        baseUrl: "/music/",
       });
-      this.Plucks = new Tone.ToneAudioBuffers({
+      this.cymbals = new Tone.ToneAudioBuffers({
         urls: {
-          type1: "pluck (1).wav",
-          type2: "pluck (2).wav",
-          type3: "pluck (3).wav",
-          type4: "pluck (4).wav",
-          type5: "pluck (5).wav",
-          type6: "pluck (6).wav",
-          type7: "pluck (7).wav",
-          type8: "pluck (8).wav",
+          type1: "cymbals/ClosedHihat1.wav",
+          type2: "cymbals/ClosedHihat2.wav",
+          type3: "cymbals/Crash1.wav",
+          type4: "cymbals/Crash2.wav",
+          type5: "cymbals/OpenHihat1.wav",
+          type6: "cymbals/OpenHihat2.wav",
+          type7: "cymbals/Ride1.wav",
+          type8: "cymbals/Ride2.wav",
         },
-        onload: () => console.log("Plucks loaded"),
-        baseUrl: "/api",
+        onload: () => console.log("cymbals loaded"),
+        baseUrl: "/music/",
       });
-      this.other4 = new Tone.ToneAudioBuffers({
+      this.piano = new Tone.ToneAudioBuffers({
         urls: {
-          type1: "Kick2.wav",
-          type2: "Kick2.wav",
-          type3: "drum3.wav",
-          type4: "drum5.wav",
-          type5: "drum5.wav",
-          type6: "drum6.wav",
-          type7: "drum7.wav",
-          type8: "drum8.wav",
+          type1: "piano/A03.wav",
+          type2: "piano/C3.wav",
+          type3: "piano/C4.wav",
+          type4: "piano/D03.wav",
+          type5: "piano/D3.wav",
+          type6: "piano/F3.wav",
+          type7: "piano/G03.wav",
+          type8: "piano/G3.wav",
         },
-        onload: () => console.log("drums loaded"),
-        baseUrl: "/api",
+        onload: () => console.log("piano loaded"),
+        baseUrl: "/music/",
       });
-      this.other5 = new Tone.ToneAudioBuffers({
+      this.guitar = new Tone.ToneAudioBuffers({
         urls: {
-          type1: "Cymbals1.wav",
-          type2: "Cymbals2.wav",
-          type3: "Cymbals3.wav",
-          type4: "Cymbals4.wav",
-          type5: "Cymbals5.wav",
-          type6: "Cymbals6.wav",
-          type7: "Cymbals7.wav",
-          type8: "Cymbals8.wav",
+          type1: "guitar/A02.wav",
+          type2: "guitar/C2.wav",
+          type3: "guitar/C3.wav",
+          type4: "guitar/D02.wav",
+          type5: "guitar/D2.wav",
+          type6: "guitar/F2.wav",
+          type7: "guitar/G02.wav",
+          type8: "guitar/G2.wav",
         },
-        onload: () => console.log("Cymbals loaded"),
-        baseUrl: "/api",
+        onload: () => console.log("guitar loaded"),
+        baseUrl: "/music/",
       });
-      this.other6 = new Tone.ToneAudioBuffers({
+      this.lead = new Tone.ToneAudioBuffers({
         urls: {
-          type1: "pluck (1).wav",
-          type2: "pluck (2).wav",
-          type3: "pluck (3).wav",
-          type4: "pluck (4).wav",
-          type5: "pluck (5).wav",
-          type6: "pluck (6).wav",
-          type7: "pluck (7).wav",
-          type8: "pluck (8).wav",
+          type1: "lead/A02.wav",
+          type2: "lead/C2.wav",
+          type3: "lead/C3.wav",
+          type4: "lead/D02.wav",
+          type5: "lead/D2.wav",
+          type6: "lead/F2.wav",
+          type7: "lead/G02.wav",
+          type8: "lead/G2.wav",
         },
-        onload: () => console.log("Plucks loaded"),
-        baseUrl: "/api",
-      });
-      this.other7 = new Tone.ToneAudioBuffers({
-        urls: {
-          type1: "Kick2.wav",
-          type2: "Kick2.wav",
-          type3: "drum3.wav",
-          type4: "drum5.wav",
-          type5: "drum5.wav",
-          type6: "drum6.wav",
-          type7: "drum7.wav",
-          type8: "drum8.wav",
-        },
-        onload: () => console.log("drums loaded"),
-        baseUrl: "/api",
-      });
-      this.other8 = new Tone.ToneAudioBuffers({
-        urls: {
-          type1: "Cymbals1.wav",
-          type2: "Cymbals2.wav",
-          type3: "Cymbals3.wav",
-          type4: "Cymbals4.wav",
-          type5: "Cymbals5.wav",
-          type6: "Cymbals6.wav",
-          type7: "Cymbals7.wav",
-          type8: "Cymbals8.wav",
-        },
-        onload: () => console.log("Cymbals loaded"),
-        baseUrl: "/api",
-      });
-      this.other9 = new Tone.ToneAudioBuffers({
-        urls: {
-          type1: "pluck (1).wav",
-          type2: "pluck (2).wav",
-          type3: "pluck (3).wav",
-          type4: "pluck (4).wav",
-          type5: "pluck (5).wav",
-          type6: "pluck (6).wav",
-          type7: "pluck (7).wav",
-          type8: "pluck (8).wav",
-        },
-        onload: () => console.log("Plucks loaded"),
-        baseUrl: "/api",
-      });
-      this.other10 = new Tone.ToneAudioBuffers({
-        urls: {
-          type1: "Kick2.wav",
-          type2: "Kick2.wav",
-          type3: "drum3.wav",
-          type4: "drum5.wav",
-          type5: "drum5.wav",
-          type6: "drum6.wav",
-          type7: "drum7.wav",
-          type8: "drum8.wav",
-        },
-        onload: () => console.log("drums loaded"),
-        baseUrl: "/api",
+        onload: () => console.log("lead loaded"),
+        baseUrl: "/music/",
       });
     },
     mouseOverNode(name, id) {
@@ -1352,21 +1441,32 @@ export default {
       }
     },
     getDataList: function () {
-      this.$axios
-        .get("http://138.197.192.223:49001/api/info", {})
-        .then((res) => {
-          this.dataRowsList = res.data.data.row;
-          this.dataColumnList = res.data.data.column;
-          let current = 0;
-          for (let j = 0; j < this.tracks.length; j++) {
-            for (let i = 0; i < this.tracks[j].length; i++) {
-              current++;
-              this.tracks[j][i].activate = this.dataColumnList[current - 1];
-              this.tracks[j][i].info = this.dataRowsList[j];
-            }
-          }
-          console.log(this.tracks);
-        });
+      // this.$axios
+      //   .get("http://138.197.192.223:49001/api/info", {})
+      //   .then((res) => {
+      //     this.dataRowsList = res.data.data.row;
+      //     this.dataColumnList = res.data.data.column;
+      //     let current = 0;
+      //     for (let j = 0; j < this.tracks.length; j++) {
+      //       for (let i = 0; i < this.tracks[j].length; i++) {
+      //         current++;
+      //         this.tracks[j][i].activate = this.dataColumnList[current - 1];
+      //         this.tracks[j][i].info = this.dataRowsList[j];
+      //       }
+      //     }
+      //     console.log(this.tracks);
+      //   });
+      this.dataRowsList = this.data.row;
+      this.dataColumnList = this.data.column;
+      let current = 0;
+      for (let j = 0; j < this.tracks.length; j++) {
+        for (let i = 0; i < this.tracks[j].length; i++) {
+          current++;
+          this.tracks[j][i].activate = this.dataColumnList[current - 1];
+          this.tracks[j][i].info = this.dataRowsList[j];
+        }
+      }
+      console.log(this.tracks);
     },
   },
 };

@@ -11,6 +11,7 @@
     "axios": "^0.24.0",
     "copy-webpack-plugin": "^6.2.0",
     "core-js": "^3.6.4",
+    "element-ui": "^2.15.6",
     "jquery": "^3.6.0",
     "terser-webpack-plugin": "^4.2.3",
     "tone": "^14.7.77",

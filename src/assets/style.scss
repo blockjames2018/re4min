@@ -1,15 +1,12 @@
 .drum {
   position: relative;
   box-sizing: border-box;
-  background-color: #000000;
-  background-image: url(/img/bg.png);
+  background-color: #fff;
   background-repeat: no-repeat;
   min-height: 100vh;
-  padding: 40px;
   padding-bottom: 200px;
 }
 main {
-  margin-top: 155px;
   .kIxuhI {
     margin-top: 8px;
     box-sizing: border-box;
@@ -600,33 +597,33 @@ main {
     width: 100%;
   }
   .tickerNum {
-    width: 85%;
-    overflow: hidden;
+    background: #ebedec;
+    height: 30px;
+    display: flex;
+    align-items: center;
   }
   .jKNSgD {
-    margin-top: -10px;
     display: flex;
     box-sizing: border-box;
     align-items: center;
     height: 30px;
     width: fit-content;
-    opacity: 0.5;
-
     .ticker {
-      display: inline-block;
-      width: 60px;
+      display: flex;
+      justify-content: center;
+      width: 102px;
       height: 16px;
-      text-align: center;
-      margin: 0 7px;
-      font-size: 12px;
-      color: #fff;
+      font-size: 16px;
+      color: #000;
+      font-weight: 600;
     }
   }
+
   .jkaEgP {
     display: flex;
     box-sizing: border-box;
-    width: 180px;
-    background-color: black;
+    width: 100px;
+    background-color: #ebedec;
     height: 30px;
     align-items: center;
   }
@@ -702,16 +699,20 @@ main {
     // opacity:.9;
     // width: fit-content;
     display: flex;
-    margin: 0 100px;
-    padding-top: 50px;
+    margin: 0 0 0 100px;
+    padding-top: 24vh;
     .track_flex {
       // display: flex;
       display: -webkit-box;
-      margin-bottom: 5px;
-      margin-top: 5px;
-      padding: 5px;
       align-items: center;
-      height: 65px;
+      height: 102px;
+      img {
+        width: 99px;
+        height: 102px;
+      }
+    }
+    .track_Icon {
+      border-right: 2px solid #d8dad9;
     }
     .track-name {
       display: flex;
@@ -728,19 +729,8 @@ main {
     //   width: 60px;
     //   height: 60px;
     // }
-    .ticker {
-      display: inline-block;
-      width: 60px;
-      height: 16px;
-      text-align: center;
-      margin: 0 7px;
-      &.active {
-        background-color: #65b1a9;
-      }
-    }
     .trackNodeName {
-      width: 80px;
-      margin-top: 6px;
+      width: 100px;
     }
     .trackNodeList {
       overflow-x: hidden;
@@ -903,18 +893,24 @@ input[type="number"] {
   margin-top: -40px;
 }
 .bracket1 {
-  width: 96vw;
+  width: 100vw;
   position: absolute;
-  padding-top: 12px;
-  background-image: url(/img/bracket.png);
-  background-color: #000;
+  padding-top: -20px;
   position: fixed;
-  height: 50px;
-  background-repeat: no-repeat;
-  background-size: 100%;
+  height: 80px;
   z-index: 9999;
   display: flex;
-  background-position: center;
+  align-items: center;
+  background: #fff;
+  padding-top: 10vh;
+  padding-bottom: 5vh;
+  .player_container {
+    margin: 0 198px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
 }
 .bracket img {
   width: 96vw;
@@ -923,67 +919,76 @@ input[type="number"] {
 }
 .block {
   vertical-align: top;
-  padding: 0px;
-  margin: 5px;
-  border-radius: 4px;
-  height: 60px;
-  width: 60px;
-  border: 2px solid #000;
+  height: 100px;
+  width: 100px;
+  background-color: #ebedec;
+  border: 1px solid #e3e3e3;
+  background-position: 50%;
+  background-size: 200%;
+  &.active {
+    border-left: 1px solid #000;
+  }
 }
 .blockMini {
   vertical-align: top;
-  padding: 0px;
-  margin: 5px;
-  border-radius: 4px;
-  height: 30px;
-  width: 60px;
-  border: 2px solid #000;
+  height: 100px;
+  width: 100px;
+  background-position: 50%;
+  background-size: 200%;
+  border: 1px solid #fff0;
+  &.active {
+    border-left: 1px solid #000;
+  }
 }
-//bass sfx drums synth cymbals piano guitar keys
+//bass pad drums synth cymbals piano guitar lead
 .bass {
-  background: linear-gradient(180deg, #6284ff 0%, #68c9ff 100%);
-  opacity: 0.2;
+  background-image: url(/img/guitar.png);
 }
-.sfx {
-  background: linear-gradient(180deg, #68c9ff 0%, #49f5a2 100%);
-  opacity: 0.2;
+.pad {
+  background-image: url(/img/piano.png);
 }
 .drums {
-  background: linear-gradient(180deg, #49f5a2 0%, #73f3cf 100%);
-  opacity: 0.2;
+  background-image: url(/img/drum.png);
 }
 .synth {
-  background: linear-gradient(180deg, #73f3cf 0%, #ffe55b 100%);
-  opacity: 0.2;
+  background-image: url(/img/Synths.png);
 }
 .cymbals {
-  background: linear-gradient(180deg, #ffe55b 0%, #ef8e48 100%);
-  opacity: 0.2;
+  background-image: url(/img/guitar.png);
 }
 .piano {
-  background: linear-gradient(180deg, #ef8e48 0%, #f56849 100%);
-  opacity: 0.2;
+  background-image: url(/img/piano.png);
 }
 .guitar {
-  background: linear-gradient(180deg, #f56849 0%, #ff5b5b 100%);
-  opacity: 0.2;
+  background-image: url(/img/drum.png);
 }
-.keys {
-  background: linear-gradient(180deg, #ff5b5b 0%, #ef48d4 100%);
-  opacity: 0.2;
+.lead {
+  background-image: url(/img/Synths.png);
 }
-//bass sfx drums synth cymbals piano guitar keys
-.blockCheck {
-  opacity: 0.99 !important;
+//bass pad drums synth cymbals piano guitar lead
+.bass_check {
+  background-image: url(/img/color-guitar.png);
 }
-
-.track {
-  &.track_flex {
-    height: 30px !important;
-  }
-  .active {
-    border: 2px solid #fff;
-  }
+.pad_check {
+  background-image: url(/img/color-piano.png);
+}
+.drums_check {
+  background-image: url(/img/color-drum.png);
+}
+.synth_check {
+  background-image: url(/img/color-Synths.png);
+}
+.cymbals_check {
+  background-image: url(/img/color-guitar.png);
+}
+.piano_check {
+  background-image: url(/img/color-piano.png);
+}
+.guitar_check {
+  background-image: url(/img/color-drum.png);
+}
+.lead_check {
+  background-image: url(/img/color-Synths.png);
 }
 
 .player {
@@ -991,16 +996,16 @@ input[type="number"] {
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  margin-left: 35%;
+  width: 80px;
   img {
-    margin: 0 10px;
+    width: 5vw;
   }
 }
 .closeIcon {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 355px;
+  height: 816px;
   cursor: pointer;
 }
 .leftOrRight {
@@ -1078,56 +1083,6 @@ input[type="number"] {
     cursor: pointer;
     // margin-top: 40px;
   }
-  .mapListInfo {
-    width: 325px;
-    height: 180px;
-    overflow: hidden;
-    margin: 0 10px;
-    .progress-wrapper {
-      width: 99%;
-      margin: 0px auto;
-      padding: 10px 0;
-      color: #fff;
-      font-size: 12px;
-      .progress-bar-wrapper {
-        flex: 1;
-        // margin-right: 5px;
-        .progress-bar {
-          height: 20px;
-          cursor: pointer;
-          .bar-inner {
-            position: relative;
-            top: 13px;
-            height: 2px;
-            background: rgba(238, 229, 255, 1);
-            .progress {
-              position: absolute;
-              height: 100%;
-              background-color: #bc99ff;
-            }
-            .progress-btn-wrapper {
-              position: absolute;
-              left: -8px;
-              top: -13px;
-              width: 20px;
-              height: 20px;
-              .progress-btn {
-                position: relative;
-                top: 7px;
-                left: 7px;
-                box-sizing: border-box;
-                width: 12px;
-                height: 12px;
-                border: 3px solid #fff;
-                border-radius: 50%;
-                background: #bc99ff;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
   .block {
     width: 10px;
     height: 10px;
@@ -1144,57 +1099,24 @@ input[type="number"] {
     height: 10px;
   }
 }
-@media screen and (min-width: 1200px) {
-  .leftOrRight {
-    width: 71.5% !important;
-  }
+.mapListInfo {
+  width: 100%;
+  margin: 0 10px;
 }
-@media screen and (min-width: 1300px) {
-  .leftOrRight {
-    width: 75% !important;
-  }
-  main .tickerNum {
-    width: 78%;
-  }
+/deep/.el-slider__runway {
+  height: 15px;
+  background-color: #d8dad9;
+  margin-left: 2vw;
 }
-@media screen and (min-width: 1400px) {
-  .leftOrRight {
-    width: 76% !important;
-  }
+
+/deep/.el-slider__bar {
+  height: 15px;
+  background-color: #ebedec;
 }
-@media screen and (min-width: 1500px) {
-  .leftOrRight {
-    width: 78% !important;
-  }
+/deep/.el-slider__button-wrapper {
+  top: -10px;
 }
-@media screen and (min-width: 1630px) {
-  .leftOrRight {
-    width: 81% !important;
-  }
-  main .tickerNum {
-    width: 82%;
-  }
-}
-@media screen and (min-width: 1890px) {
-  .leftOrRight {
-    width: 81.5% !important;
-  }
-  main .tickerNum {
-    width: 85%;
-  }
-}
-@media screen and (min-width: 1990px) {
-  .leftOrRight {
-    width: 83.5% !important;
-  }
-}
-@media screen and (min-width: 2180px) {
-  .leftOrRight {
-    width: 84.5% !important;
-  }
-}
-@media screen and (min-width: 2310px) {
-  .leftOrRight {
-    width: 86% !important;
-  }
+/deep/.el-slider__button {
+  border: 2px solid #707171;
+  background-color: #fff;
 }

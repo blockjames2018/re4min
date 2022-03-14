@@ -1,118 +1,47 @@
 <template >
   <div class="drum">
-    <div class="logo">
-      <div class="bottom-player">
-        <div>
-          <img src="img/logo.png" />
-        </div>
-        <div class="player">
-          <img src="img/reset.png" @click="resetM()" />
-          <div v-touch:tap="startSound">
-            <img src="img/stop.png" v-show="!playing" />
-            <img src="img/start.png" v-show="playing" />
-          </div>
-          <img src="img/video.png" />
-        </div>
-        <div class="mapNodeList">
-          <div class="mapNext">
-            <img v-if="mapTotalWidth === 0" src="img/l.png" />
-            <img
-              v-else
-              src="img/r.png"
-              @click="mapRollData('back')"
-              style="transform: rotate(180deg)"
-            />
-          </div>
-          <div class="mapListInfo" ref="mapListContainer">
-            <div class="progress-wrapper">
-              <span class="time">{{ getShowTime() }}</span>
-              <div class="progress-bar-wrapper">
-                <div class="progress-bar" ref="progressBar">
-                  <div class="bar-inner">
-                    <div class="progress" ref="progress"></div>
-                    <div
-                      class="progress-btn-wrapper"
-                      ref="progressBtn"
-                      @touchmove.prevent="progressTouchMove"
-                    >
-                      <div class="progress-btn"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="mapInfo">
-              <div v-for="(track, index) in tracks" class="track" :key="index">
-                <div class="track_flex">
-                  <div
-                    :class="{
-                      block: true,
-                      bass: tracksName[index] === 'bass',
-                      sfx: tracksName[index] === 'sfx',
-                      drums: tracksName[index] === 'drums',
-                      synth: tracksName[index] === 'synth',
-                      cymbals: tracksName[index] === 'cymbals',
-                      piano: tracksName[index] === 'piano',
-                      guitar: tracksName[index] === 'guitar',
-                      keys: tracksName[index] === 'keys',
-                      blockCheck: check(track, n - 1),
-                    }"
-                    :key="n + 'w'"
-                    v-for="n in parseInt(notevalue)"
-                  >
-                    &#160;
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="mapNext">
-            <img
-              v-show="mapTotalWidth < mapCountWidth"
-              src="img/r.png"
-              @click="mapRollData('next')"
-            />
-            <img
-              v-show="mapTotalWidth >= mapCountWidth"
-              src="img/l.png"
-              style="transform: rotate(180deg)"
-            />
-          </div>
-        </div>
-      </div>
-    </div>
     <main>
       <div class="container">
         <div class="bracket1">
-          <!-- <img src="img/bracket.png" /> -->
-          <div class="jKNSgD" style="opacity: 0">
-            <div class="jkaEgP">
-              <div class="jkdwEk">
-                <span class="sc-cSHVUG cYSnRy">Channels</span>
-              </div>
-              <div class="eAnnxY">
-                <span class="sc-cSHVUG VkIKe">Hit</span>
+          <div class="player_container">
+            <div class="player">
+              <div v-touch:tap="startSound">
+                <img src="img/Play.png" v-show="!playing" />
+                <img src="img/Pause.png" v-show="playing" />
               </div>
             </div>
-          </div>
-          <div class="tickerNum" ref="numContainer">
-            <div class="sc-Num jKNSgD">
-              <div
-                v-for="(n, index) in parseInt(notevalue)"
-                :key="index + 30"
-                :class="{ ticker: true }"
-              >
-                {{ n }}
-              </div>
+            <div class="mapListInfo">
+              <!-- <div class="progress-wrapper">
+                <div class="progress-bar-wrapper">
+                  <div class="progress-bar" ref="progressBar">
+                    <div class="bar-inner">
+                      <div class="progress" ref="progress"></div>
+                      <div class="progress-btn-wrapper" ref="progressBtn"></div>
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+              <el-slider
+                v-model="progressValue"
+                :show-tooltip="false"
+                @change="changeProgress()"
+              ></el-slider>
             </div>
           </div>
         </div>
         <div class="trackcontainer">
           <div class="trackNodeName">
+            <div class="jKNSgD">
+              <div class="jkaEgP">
+                <div class="jkdwEk">
+                  <span class="sc-cSHVUG cYSnRy"></span>
+                </div>
+              </div>
+            </div>
             <div v-for="(track, index) in tracks" class="track" :key="index">
               <div v-if="showTracks == index && !isFristTracks">
-                <div class="track_flex" @click="getShowTracks(-1)">
-                  <img :src="'img/' + tracksName[index] + 'Icon.png'" />
+                <div class="track_flex track_Icon" @click="getShowTracks(-1)">
+                  <img :src="'img/' + tracksName[index] + 'Ic.png'" />
                 </div>
                 <div class="closeIcon" @click="getShowTracks(-1)">
                   <img src="img/close.png" />
@@ -121,65 +50,61 @@
               <div
                 v-else
                 @click="getShowTracks(index, false)"
-                class="track_flex"
+                class="track_flex track_Icon"
               >
-                <img :src="'img/' + tracksName[index] + 'Icon.png'" />
+                <img :src="'img/' + tracksName[index] + 'Ic.png'" />
               </div>
             </div>
           </div>
           <div class="trackNodeList" ref="listContainer">
-            <div class="leftOrRight">
-              <div>
-                <img
-                  v-show="totalWidth != 0"
-                  src="img/dleft.png"
-                  class="changeImg"
-                />
-                <img
-                  v-show="totalWidth != 0"
-                  @click="rollData('back')"
-                  src="img/left.png"
-                  class="changeLeft"
-                />
-              </div>
-              <div>
-                <img
-                  v-show="totalWidth < countWidth"
-                  @click="rollData('next')"
-                  src="img/right.png"
-                  class="changeRight"
-                />
-                <img
-                  v-show="totalWidth < countWidth"
-                  src="img/dright.png"
-                  class="changeImg"
-                />
-              </div>
-            </div>
-
             <div class="listInfo">
+              <div class="tickerNum" ref="numContainer">
+                <div class="sc-Num jKNSgD">
+                  <div
+                    v-for="(n, index) in parseInt(notevalue)"
+                    :key="index + 30"
+                    :class="{ ticker: true }"
+                  >
+                    {{ n }}
+                  </div>
+                </div>
+              </div>
               <div v-for="(track, index) in tracks" class="track" :key="index">
                 <div v-if="showTracks == index && !isFristTracks">
                   <div class="track_flex">
                     <div
                       :class="{
                         block: true,
-                        bassPlayer:
-                          n == current && tracksName[index] === 'bass',
                         active: n == current,
                         bass: tracksName[index] === 'bass',
-                        sfx: tracksName[index] === 'sfx',
+                        bass_check:
+                          check(track, n - 1) && tracksName[index] === 'bass',
+                        pad: tracksName[index] === 'pad',
+                        pad_check:
+                          check(track, n - 1) && tracksName[index] === 'pad',
                         drums: tracksName[index] === 'drums',
+                        drums_check:
+                          check(track, n - 1) && tracksName[index] === 'drums',
                         synth: tracksName[index] === 'synth',
+                        synth_check:
+                          check(track, n - 1) && tracksName[index] === 'synth',
                         cymbals: tracksName[index] === 'cymbals',
+                        cymbals_check:
+                          check(track, n - 1) &&
+                          tracksName[index] === 'cymbals',
                         piano: tracksName[index] === 'piano',
+                        piano_check:
+                          check(track, n - 1) && tracksName[index] === 'piano',
                         guitar: tracksName[index] === 'guitar',
-                        keys: tracksName[index] === 'keys',
-                        blockCheck: check(track, n - 1),
+                        guitar_check:
+                          check(track, n - 1) && tracksName[index] === 'guitar',
+                        lead: tracksName[index] === 'lead',
+                        lead_check:
+                          check(track, n - 1) && tracksName[index] === 'lead',
                       }"
                       :key="n + 't'"
                       v-for="n in parseInt(notevalue)"
-                       @click="getShowTracks(-1)"
+                      @click="getShowTracks(-1)"
                     >
                       &#160;
                     </div>
@@ -196,14 +121,37 @@
                         blockMini: true,
                         active: n == current,
                         bass: tracksName[index] === 'bass',
-                        sfx: tracksName[index] === 'sfx',
+                        bass_check:
+                          tracker.activate[n - 1] &&
+                          tracksName[index] === 'bass',
+                        pad: tracksName[index] === 'pad',
+                        pad_check:
+                          tracker.activate[n - 1] &&
+                          tracksName[index] === 'pad',
                         drums: tracksName[index] === 'drums',
+                        drums_check:
+                          tracker.activate[n - 1] &&
+                          tracksName[index] === 'drums',
                         synth: tracksName[index] === 'synth',
+                        synth_check:
+                          tracker.activate[n - 1] &&
+                          tracksName[index] === 'synth',
                         cymbals: tracksName[index] === 'cymbals',
+                        cymbals_check:
+                          tracker.activate[n - 1] &&
+                          tracksName[index] === 'cymbals',
                         piano: tracksName[index] === 'piano',
+                        piano_check:
+                          tracker.activate[n - 1] &&
+                          tracksName[index] === 'piano',
                         guitar: tracksName[index] === 'guitar',
-                        keys: tracksName[index] === 'keys',
-                        blockCheck: tracker.activate[n - 1],
+                        guitar_check:
+                          tracker.activate[n - 1] &&
+                          tracksName[index] === 'guitar',
+                        lead: tracksName[index] === 'lead',
+                        lead_check:
+                          tracker.activate[n - 1] &&
+                          tracksName[index] === 'lead',
                       }"
                       :key="n + 's'"
                       v-for="n in parseInt(notevalue)"
@@ -227,17 +175,31 @@
                   <div
                     :class="{
                       block: true,
-                      bassPlayer: n == current && tracksName[index] === 'bass',
                       active: n == current,
                       bass: tracksName[index] === 'bass',
-                      sfx: tracksName[index] === 'sfx',
+                      bass_check:
+                        check(track, n - 1) && tracksName[index] === 'bass',
+                      pad: tracksName[index] === 'pad',
+                      pad_check:
+                        check(track, n - 1) && tracksName[index] === 'pad',
                       drums: tracksName[index] === 'drums',
+                      drums_check:
+                        check(track, n - 1) && tracksName[index] === 'drums',
                       synth: tracksName[index] === 'synth',
+                      synth_check:
+                        check(track, n - 1) && tracksName[index] === 'synth',
                       cymbals: tracksName[index] === 'cymbals',
+                      cymbals_check:
+                        check(track, n - 1) && tracksName[index] === 'cymbals',
                       piano: tracksName[index] === 'piano',
+                      piano_check:
+                        check(track, n - 1) && tracksName[index] === 'piano',
                       guitar: tracksName[index] === 'guitar',
-                      keys: tracksName[index] === 'keys',
-                      blockCheck: check(track, n - 1),
+                      guitar_check:
+                        check(track, n - 1) && tracksName[index] === 'guitar',
+                      lead: tracksName[index] === 'lead',
+                      lead_check:
+                        check(track, n - 1) && tracksName[index] === 'lead',
                     }"
                     :key="n + 'y'"
                     v-for="n in parseInt(notevalue)"
@@ -249,20 +211,6 @@
             </div>
           </div>
         </div>
-        <div class="bracket" style="margin-top: -35px">
-          <img src="img/bracket.png" />
-        </div>
-      </div>
-      <div class="nftInfo" v-show="showNftInfo">
-        <div>
-          <p>owner：</p>
-          <span>0x2d56Ee9556c...edDe</span>
-        </div>
-        <div>
-          <p>info：</p>
-          <span>The first art movement.</span>
-        </div>
-        <div class="date">date: 2022/02/09</div>
       </div>
     </main>
   </div>
@@ -280,7 +228,7 @@ export default {
       notevalue: 960,
       playing: false,
       bpm: 30,
-      //bass sfx drums synth cymbals piano guitar keys
+      //bass pad drums synth cymbals piano guitar lead
       tracks: [
         //1,bass
         [
@@ -329,7 +277,7 @@ export default {
             info: [],
           },
         ],
-        //2,sfx
+        //2,pad
         [
           {
             id: "ClosedHihat1",
@@ -671,7 +619,7 @@ export default {
             info: [],
           },
         ],
-        //8,keys
+        //8,lead
         [
           {
             id: "Plucks1",
@@ -732,25 +680,25 @@ export default {
         ],
       ],
       tracksName: [
-        //bass sfx drums synth cymbals piano guitar keys
+        //bass pad drums synth cymbals piano guitar lead
         "bass",
-        "sfx",
+        "pad",
         "drums",
         "synth",
         "cymbals",
         "piano",
         "guitar",
-        "keys",
+        "lead",
       ],
-      //bass sfx drums synth cymbals piano guitar keys
+      //bass pad drums synth cymbals piano guitar lead
       bass: null,
-      sfx: null,
+      pad: null,
       drums: null,
       synth: null,
       cymbals: null,
       piano: null,
       guitar: null,
-      keys: null,
+      lead: null,
 
       isFristTracks: true,
       showTracks: 0,
@@ -760,32 +708,21 @@ export default {
       lastWidth: 0,
       showNftInfo: false,
 
-      mapCountWidth: 0,
-      mapTotalWidth: 0,
-      mapLastWidth: 0,
-
-      screenWidth: document.body.clientWidth,
-
-      percentV: 0,
-
-      minute: 0,
-      second: 0,
-
-      numCountWidth: 0,
+      progressValue: 0,
     };
   },
   computed: {
     instruments() {
-      //bass sfx drums synth cymbals piano guitar keys
+      //bass pad drums synth cymbals piano guitar lead
       return [
         this.bass,
-        this.sfx,
+        this.pad,
         this.drums,
         this.synth,
         this.cymbals,
         this.piano,
         this.guitar,
-        this.keys,
+        this.lead,
       ];
     },
   },
@@ -809,24 +746,11 @@ export default {
   },
   mounted() {
     this.init();
-
     //Get the total width and visual width of the music lattice
     let scrollWidth = this.$refs.listContainer.scrollWidth;
     let viewWidth = $(".trackNodeList").width();
     this.countWidth = scrollWidth - viewWidth;
     console.log(this.countWidth);
-
-    //numContainer
-    // let numScrollWidth = this.$refs.numContainer.scrollWidth;
-    // let numViewWidth = $(".trackNodeList").width();
-    // this.numCountWidth = numScrollWidth - numViewWidth;
-    // console.log(this.numCountWidth);
-
-    //Get the total width and visual width of the music lattice of the mini map
-    let mapScrollWidth = this.$refs.mapListContainer.scrollWidth;
-    let mapViewWidth = $(".mapListInfo").width();
-    this.mapCountWidth = mapScrollWidth - mapViewWidth;
-    console.log(this.mapCountWidth);
   },
   watch: {
     //bpm When changes occur
@@ -874,10 +798,8 @@ export default {
         Tone.start();
         this.loop = new Tone.Loop((time) => {
           Tone.Draw.schedule(() => {
+            console.log("--------" + this.current);
             this.current++;
-            this.getTime(this.current);
-            this.getRollView();
-            this.percent();
             if (this.current > this.notevalue) this.current = 1;
             for (let j = 0; j < this.tracks.length; j++) {
               for (let i = 0; i < this.tracks[j].length; i++) {
@@ -886,6 +808,8 @@ export default {
                 }
               }
             }
+            this.getRollView();
+            this.percent();
           }, time);
         }, this.notevalue + "n").start(0);
 
@@ -898,96 +822,61 @@ export default {
       this.playing = !this.playing;
     },
 
-    //Time on the mini map
-    getTime(index) {
-      if (this.minute === 8) {
-        this.minute = 0;
-        this.second = 0;
-      }
-      if (this.second === 60) {
-        this.minute++;
-        this.second = 0;
-      }
-      if (index % 2 === 0) {
-        this.second++;
-      }
-    },
-
-    //Time conversion display format
-    getShowTime() {
-      let minute = this.minute;
-      let second = this.second;
-      if (minute < 10) {
-        minute = "0" + minute;
-      }
-      if (second < 10) {
-        second = "0" + second;
-      }
-      return minute + " : " + second;
-    },
-
     //Mini map scroll bar
     percent() {
-      if (this.percentV < 96) {
-        this.percentV = this.percentV + 0.1;
-        this.$refs.progress.style.width = this.percentV + "%";
-        this.$refs.progressBtn.style.left = this.percentV - 2 + "%";
+      let val = 100 / 960;
+      if (this.progressValue <= 100) {
+        this.progressValue = this.progressValue + val;
       } else {
-        this.percentV = 0 + 0.1;
-        this.$refs.progress.style.width = 0 + "%";
-        this.$refs.progressBtn.style.left = 0 - 2 + "%";
+        this.progressValue = 0;
       }
     },
 
-    //Replay
-    resetM() {
-      this.current = -1;
+    //Positioning when dragging the scroll bar
+    changeProgress() {
       Tone.Transport.stop();
       Tone.Transport.cancel();
       this.playing = false;
+      let num = this.countWidth / 100;
+      let val = num * this.progressValue;
+      this.totalWidth = val;
+      $(".listInfo")
+        .css("transform", `translateX(-${this.totalWidth}px)`)
+        .css("transition-duration", "2s");
 
-      this.totalWidth = 0;
-      $(".listInfo").css("transform", `translateX(-${this.totalWidth}px)`);
-      //num
-      $(".sc-Num").css("transform", `translateX(-${this.totalWidth}px)`);
+      this.current = parseInt(this.totalWidth / 102);
 
-      this.minute = 0;
-      this.second = 0;
-      this.getTime(-1);
-
-      this.percentV = 0 + 0.1;
-      this.$refs.progress.style.width = 0 + "%";
-      this.$refs.progressBtn.style.left = 0 - 2 + "%";
+      console.log(this.current);
     },
 
     init: function () {
-      //bass sfx drums synth cymbals piano guitar keys
+      //bass pad drums synth cymbals piano guitar lead
       this.bass = new Tone.ToneAudioBuffers({
         urls: {
-          type1: "drums/Kick1-C.wav",
-          type2: "drums/Kick2-D.wav",
-          type3: "drums/Percussion1.wav",
-          type4: "drums/Percussion2.wav",
-          type5: "drums/RimshotSnare1.wav",
-          type6: "drums/RimshotSnare2.wav",
-          type7: "drums/Snare1-F.wav",
-          type8: "drums/Snare2-A.wav",
+          type1: "bass/A2.wav",
+          type2: "bass/C2.wav",
+          type3: "bass/C3.wav",
+          type4: "bass/D02.wav",
+          type5: "bass/D2.wav",
+          type6: "bass/F2.wav",
+          type7: "bass/G02.wav",
+          type8: "bass/G2.wav",
         },
         onload: () => console.log("bass loaded"),
         baseUrl: "/music/",
       });
-      this.sfx = new Tone.ToneAudioBuffers({
+      this.pad = new Tone.ToneAudioBuffers({
         urls: {
-          type1: "cymbals/ClosedHihat1.wav",
-          type2: "cymbals/ClosedHihat2.wav",
-          type3: "cymbals/Crash1.wav",
-          type4: "cymbals/Crash2.wav",
-          type5: "cymbals/OpenHihat1.wav",
-          type6: "cymbals/OpenHihat2.wav",
-          type7: "cymbals/Ride1.wav",
-          type8: "cymbals/Ride2.wav",
+          type1: "pad/A03.wav",
+          type2: "pad/C3.wav",
+          type3: "pad/C4.wav",
+          type4: "pad/D03.wav",
+          type5: "pad/D3.wav",
+          type6: "pad/F3.wav",
+          type7: "pad/G03.wav",
+          type8: "pad/G3.wav",
         },
-        onload: () => console.log("sfx loaded"),
+        onload: () => console.log("pad loaded"),
         baseUrl: "/music/",
       });
       this.drums = new Tone.ToneAudioBuffers({
@@ -1006,14 +895,14 @@ export default {
       });
       this.synth = new Tone.ToneAudioBuffers({
         urls: {
-          type1: "piano/A03.wav",
-          type2: "piano/C3.wav",
-          type3: "piano/C4.wav",
-          type4: "piano/D03.wav",
-          type5: "piano/D3.wav",
-          type6: "piano/F3.wav",
-          type7: "piano/G03.wav",
-          type8: "piano/G3.wav",
+          type1: "synth/A02.wav",
+          type2: "synth/C2.wav",
+          type3: "synth/C3.wav",
+          type4: "synth/D02.wav",
+          type5: "synth/D2.wav",
+          type6: "synth/F2.wav",
+          type7: "synth/G02.wav",
+          type8: "synth/G2.wav",
         },
         onload: () => console.log("synth loaded"),
         baseUrl: "/music/",
@@ -1048,30 +937,30 @@ export default {
       });
       this.guitar = new Tone.ToneAudioBuffers({
         urls: {
-          type1: "drums/Kick1-C.wav",
-          type2: "drums/Kick2-D.wav",
-          type3: "drums/Percussion1.wav",
-          type4: "drums/Percussion2.wav",
-          type5: "drums/RimshotSnare1.wav",
-          type6: "drums/RimshotSnare2.wav",
-          type7: "drums/Snare1-F.wav",
-          type8: "drums/Snare2-A.wav",
+          type1: "guitar/A02.wav",
+          type2: "guitar/C2.wav",
+          type3: "guitar/C3.wav",
+          type4: "guitar/D02.wav",
+          type5: "guitar/D2.wav",
+          type6: "guitar/F2.wav",
+          type7: "guitar/G02.wav",
+          type8: "guitar/G2.wav",
         },
         onload: () => console.log("guitar loaded"),
         baseUrl: "/music/",
       });
-      this.keys = new Tone.ToneAudioBuffers({
+      this.lead = new Tone.ToneAudioBuffers({
         urls: {
-          type1: "cymbals/ClosedHihat1.wav",
-          type2: "cymbals/ClosedHihat2.wav",
-          type3: "cymbals/Crash1.wav",
-          type4: "cymbals/Crash2.wav",
-          type5: "cymbals/OpenHihat1.wav",
-          type6: "cymbals/OpenHihat2.wav",
-          type7: "cymbals/Ride1.wav",
-          type8: "cymbals/Ride2.wav",
+          type1: "lead/A02.wav",
+          type2: "lead/C2.wav",
+          type3: "lead/C3.wav",
+          type4: "lead/D02.wav",
+          type5: "lead/D2.wav",
+          type6: "lead/F2.wav",
+          type7: "lead/G02.wav",
+          type8: "lead/G2.wav",
         },
-        onload: () => console.log("keys loaded"),
+        onload: () => console.log("lead loaded"),
         baseUrl: "/music/",
       });
     },
@@ -1091,17 +980,13 @@ export default {
     //Click the map to scroll left and right
     rollData(type) {
       if (type === "next") {
-        if (this.totalWidth + 800 > this.countWidth) {
+        if (this.totalWidth + 1020 > this.countWidth) {
           this.lastWidth = this.countWidth - this.totalWidth;
           this.totalWidth = this.countWidth;
         } else {
-          this.totalWidth = this.totalWidth + 800;
+          this.totalWidth = this.totalWidth + 1020;
         }
         $(".listInfo")
-          .css("transform", `translateX(-${this.totalWidth}px)`)
-          .css("transition-duration", "2s");
-        //num
-        $(".sc-Num")
           .css("transform", `translateX(-${this.totalWidth}px)`)
           .css("transition-duration", "2s");
       } else {
@@ -1109,13 +994,9 @@ export default {
           if (this.totalWidth === this.countWidth) {
             this.totalWidth = this.totalWidth - this.lastWidth;
           } else {
-            this.totalWidth = this.totalWidth - 800;
+            this.totalWidth = this.totalWidth - 1020;
           }
           $(".listInfo")
-            .css("transform", `translateX(-${this.totalWidth}px)`)
-            .css("transition-duration", "2s");
-          //num
-          $(".sc-Num")
             .css("transform", `translateX(-${this.totalWidth}px)`)
             .css("transition-duration", "2s");
         }
@@ -1126,47 +1007,16 @@ export default {
     getRollView() {
       let viewWidth = $(".trackNodeList").width();
       let activeLeft = $(".active").offset().left;
-      let distance = parseInt(viewWidth) - parseInt(activeLeft);
-      if (distance < 100) {
-        this.rollData("next");
-      }
-    },
-
-    //Click the minimap to scroll left and right
-    mapRollData(type) {
-      if (type === "next") {
-        if (this.mapTotalWidth + 150 > this.mapCountWidth) {
-          this.mapLastWidth = this.mapCountWidth - this.mapTotalWidth;
-          this.mapTotalWidth = this.mapCountWidth;
-        } else {
-          this.mapTotalWidth = this.mapTotalWidth + 150;
+        let distance = parseInt(viewWidth) - parseInt(activeLeft);
+        if (distance < 100) {
+          this.rollData("next");
         }
-        $(".mapInfo")
-          .css("transform", `translateX(-${this.mapTotalWidth}px)`)
-          .css("transition-duration", "2s");
-      } else {
-        if (this.mapTotalWidth != 0) {
-          if (this.mapTotalWidth === this.mapCountWidth) {
-            this.mapTotalWidth = this.mapTotalWidth - this.mapLastWidth;
-          } else {
-            this.mapTotalWidth = this.mapTotalWidth - 150;
-          }
-          $(".mapInfo")
-            .css("transform", `translateX(-${this.mapTotalWidth}px)`)
-            .css("transition-duration", "2s");
-        }
-      }
     },
 
     //
     getShowTracks(index, status) {
       this.showTracks = index;
       this.isFristTracks = status;
-      if (index !== -1) {
-        $(".changeImg").css("height", "990px");
-      } else {
-        $(".changeImg").css("height", "628px");
-      }
     },
   },
 };
